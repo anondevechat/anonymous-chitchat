@@ -6,6 +6,8 @@ import UserDashboard from '@/components/UserDashboard';
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import ChatList from "@/components/ChatList";
+import MobileChatListSidebar from '@/components/MobileChatListSidebar'; // Import MobileChatListSidebar
+import DesktopSidebar from '@/components/DesktopSidebar'; // Import DesktopSidebar
 import ChatHeader from "@/components/ChatHeader";
 import ChatMessageList from "@/components/ChatMessageList";
 import MessageInput from "@/components/MessageInput";
@@ -173,40 +175,22 @@ const Index = () => {
   return (
     <div className="h-screen flex overflow-hidden">
       {/* Mobile chat list sidebar */}
-      <div 
-        className={`fixed inset-0 bg-background z-20 md:hidden transform transition-transform ${
-          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="h-full flex flex-col">
-          <div className="p-4 flex items-center border-b mobile-header">
-            <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)} className="rounded-full hover:bg-secondary">
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-            <h1 className="text-xl font-bold ml-2">Chats</h1>
-          </div>
-          
-          <div className="flex-1 overflow-auto">
-            <ChatList 
-              chats={mappedChats}
-              activeChat={activeChat}
-              onChatSelect={handleChatSelect}
-              onNewChat={handleNewChat}
-            />
-          </div>
-        </div>
-      </div>
+      <MobileChatListSidebar 
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
+        mappedChats={mappedChats}
+        activeChat={activeChat}
+        onChatSelect={handleChatSelect}
+        onNewChat={handleNewChat}
+      />
       
       {/* Desktop sidebar */}
-      <div className="hidden md:block w-80 lg:w-96 xl:w-1/4 border-r overflow-hidden flex flex-col">
-        <UserDashboard />
-        <ChatList 
-          chats={mappedChats}
-          activeChat={activeChat}
-          onChatSelect={handleChatSelect}
-          onNewChat={handleNewChat}
-        />
-      </div>
+      <DesktopSidebar 
+        mappedChats={mappedChats}
+        activeChat={activeChat}
+        onChatSelect={handleChatSelect}
+        onNewChat={handleNewChat}
+      />
       
       {/* Main chat area */}
       <div className="flex-1 overflow-hidden">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { doc, updateDoc, serverTimestamp, collection, query, where, onSnapshot } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { db } from '@/firebase/firebase';
 import { useToast } from '@/hooks/use-toast';
 
 export function useOnlineStatus(userId: string | undefined) {

@@ -5,7 +5,7 @@ import { MessageSquare, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useFirebaseAuth } from "@/hooks/useFirebaseAuth";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { db } from "@/firebase/firebase";
 
 const Welcome = () => {
   const navigate = useNavigate();

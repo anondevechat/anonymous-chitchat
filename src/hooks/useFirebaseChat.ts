@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { db, storage } from "@/lib/firebase";
+import { db, storage } from "@/firebase/firebase";
 import { 
   runTransaction,
   collection, 

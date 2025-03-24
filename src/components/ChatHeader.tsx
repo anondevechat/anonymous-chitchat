@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, MessageSquare, UserPlus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getDoc, doc } from "firebase/firestore";
-import { db } from "@/lib/firebase"; // Assuming you have a firebase config file
+import { db } from "@/firebase/firebase"; // Assuming you have a firebase config file
 
 interface ChatHeaderProps {
   activeChat: string | null;
