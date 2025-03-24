@@ -7,7 +7,7 @@ import {
   signOut,
   User
 } from "firebase/auth";
-import { auth, db } from "@/firebase/firebase";
+import { auth, db } from "@/lib/firebase";
 import { doc, setDoc, serverTimestamp, updateDoc, getDoc } from "firebase/firestore";
 import { generateFunkyName } from '@/utils/nameGenerator';
 

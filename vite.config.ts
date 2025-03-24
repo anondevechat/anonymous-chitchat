@@ -19,4 +19,26 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('src/components/ui')) {
+            return 'ui-components';
+          }
+          if (id.includes('src/components')) {
+            return 'components';
+          }
+          if (id.includes('src/lib')) {
+            return 'lib';
+          }
+          if (id.includes('src/hooks')) {
+            return 'hooks';
+          }
+          return 'index';
+        },
+      },
+    },
+  },
 }));
